@@ -4,6 +4,7 @@ import "aos/dist/aos.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { toast, ToastContainer } from "react-toastify";
+const BASE_URI = import.meta.env.VITE_BACKEND_URI;
 const imageUrls=[
   "https://res.cloudinary.com/dw5wdcchx/image/upload/v1754748501/strawberry_tonrbv.webp",
   "https://res.cloudinary.com/dw5wdcchx/image/upload/v1754748501/watermelon_kwn067.webp",
@@ -23,7 +24,7 @@ const RegistrationForm = () => {
     const handleSubmit=async(e)=>{
       e.preventDefault();
       try{
-        const res=await axios.post('http://localhost:5000/api/auth/register',{name:username,email:email,password:password,image:imageUrls[Math.floor(Math.random() * imageUrls.length)]},
+        const res=await axios.post(`${BASE_URI}/api/auth/register`,{name:username,email:email,password:password,image:imageUrls[Math.floor(Math.random() * imageUrls.length)]},
       {
         headers:{
          "Content-Type": "application/json"

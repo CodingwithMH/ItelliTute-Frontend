@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { fetchUser } from "../store/user/userSlice";
 import { toast, ToastContainer } from "react-toastify";
+const BASE_URI = import.meta.env.VITE_BACKEND_URI;
 const LoginForm = () => {
   const {userDetails}=useSelector(state=>state.user);
   const dispatch=useDispatch();
@@ -20,7 +21,7 @@ const LoginForm = () => {
     const handleSubmit=async(e)=>{
           e.preventDefault();
           try{
-            const res=await axios.post('http://localhost:5000/api/auth/login',{email:email,password:password},
+            const res=await axios.post(`${BASE_URI}/api/auth/login`,{email:email,password:password},
           {
             headers:{
              "Content-Type": "application/json",
