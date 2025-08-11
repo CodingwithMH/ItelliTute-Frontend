@@ -75,7 +75,7 @@ console.log(err)
                 className="space-y-4 border-b border-b-white text-white py-4"
               >
                 <div className="flex justify-end">
-                  <p className="p-2 inline rounded-sm bg-gradient-to-tr from-[#7C3ADA] to-[#23B7D3] max-w-[50%] break-words whitespace-normal">
+                  <p className="p-2 inline rounded-sm bg-gradient-to-tr from-[#7C3ADA] to-[#23B7D3] max-w-[50%] break-words whitespace-normal max-[500px]:max-w-[80%]">
                     {ch.query}
                   </p>
                 </div>
@@ -121,11 +121,11 @@ console.log(err)
               value={query}
               rows={1}
               onChange={(e) => setQuery(e.target.value)}
-              className="flex-1 resize-none outline-none border-0 bg-transparent text-[#000000] placeholder:text-[#8e8e8e] text-lg px-6 py-4 focus-visible:ring-0 focus-visible:ring-offset-0 custom-scrollbar"
+              className="max-[315px]:p-2 flex-1 resize-none outline-none border-0 bg-transparent text-[#000000] placeholder:text-[#8e8e8e] text-lg px-6 py-4 focus-visible:ring-0 focus-visible:ring-offset-0 custom-scrollbar"
             ></textarea>
             <button
               type="submit"
-              className="rounded-sm bg-gradient-to-r from-[#0057f8] to-[#803cf7] hover:from-[#803cf7] hover:to-[#0057f8] text-[#ffffff] px-6 py-4 shadow-lg transition-all duration-300"
+              className="max-[315px]:px-3 max-[315px]:py-2 rounded-sm bg-gradient-to-r from-[#0057f8] to-[#803cf7] hover:from-[#803cf7] hover:to-[#0057f8] text-[#ffffff] px-6 py-4 shadow-lg transition-all duration-300"
             >
               <ArrowRight className="w-5 h-5" />
             </button>

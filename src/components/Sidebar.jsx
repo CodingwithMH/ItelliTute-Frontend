@@ -1,13 +1,14 @@
 import axios from "axios";
-import { History, LogOut, Plus } from "lucide-react";
+import { History, LogOut, MoveRight, Plus, X } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { setUserDetails } from "../store/user/userSlice";
 import Aos from "aos";
 import "aos/dist/aos.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 const BASE_URI = import.meta.env.VITE_BACKEND_URI;
 const Sidebar = ({ user }) => {
+  const [showSidebar,setShowSidebar]=useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -16,8 +17,19 @@ const Sidebar = ({ user }) => {
     });
   }, []);
   return (
-    <div className="sidebar-root w-[250px] min-h-screen bg-gray-500/50 backdrop-blur-lg drop-shadow-[3px_0_4px_rgba(0,0,0,0.6)] flex flex-col justify-between">
+    <>
+    <span className="absolute top-2 left-2 text-white bg-black rounded-md z-[99]" onClick={()=>setShowSidebar(true)}>
+      {
+        !showSidebar && <MoveRight/>
+      }
+    </span>
+    <div className={`max-[800px]:fixed max-[800px]:z-100 max-[800px]:top-0 max-[800px]:left-0 max-[800px]:w-[200px] sidebar-root w-[250px] min-h-screen bg-gray-500/50 backdrop-blur-lg drop-shadow-[3px_0_4px_rgba(0,0,0,0.6)] flex flex-col transition-all justify-between ${showSidebar ? 'translate-x-0':'-translate-x-[250px]'}`}>
       <div className="relative">
+        <span className="absolute top-2 bg-black text-white rounded-md right-2 z-[15]" onClick={()=>setShowSidebar(false)}>
+          {
+            showSidebar && <X/>
+          }
+        </span>
         <div
           data-aos-delay="50"
           data-aos="fade-down"
@@ -93,6 +105,7 @@ const Sidebar = ({ user }) => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
