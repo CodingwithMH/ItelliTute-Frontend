@@ -42,7 +42,7 @@ duration:1500
     ]);
     setQuery("");
     try{
-        const res=await axios.post("http://localhost:5000/ask",{query:query})
+        const res=await axios.post("https://intelli-tute-backend.vercel.app/ask",{query:query})
 setChat((prev) => {
       const updated = [...prev];
       updated[updated.length - 1] = {
